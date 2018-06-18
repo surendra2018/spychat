@@ -1,12 +1,15 @@
+#Writing code for project on SPY_CHAT
+#Date-18/06/2018
+#Author-Surendra Chokotiya
 
-spy_name = input("Tell me your Name first: ")
-if len(spy_name)>0:
-    spy_salutation = input("Welcome "+spy_name+ " What should I call you Mr./Miss.?")
-    spy_name = spy_salutation+ "" +spy_name
-    spy_age = input("Ok " + spy_name +" Enter your age: ")
-    spy_age = int(spy_age)
-    if spy_age>12 and spy_age<60:
-        spy_rating = input("How much you like it " + spy_name)
+spy_name = input("Tell me your Name first: ")            #for take input of spy name 
+if len(spy_name)>0:                                                           #use for count len. use if condition for camparing
+    spy_salutation = input("Welcome "+spy_name+ " What should I call you Mr./Miss.?")       #Use for take input of spy salutation
+    spy_name = spy_salutation+ "" +spy_name               #use for give message to user spy name with salutation 
+    spy_age = input("Ok " + spy_name +" Enter your age: ")     #use for take input of spy age
+    spy_age = int(spy_age)                                                                #use for convert spy sge into integer
+    if spy_age>12 and spy_age<60:                                                 #use if for comparing spy age
+        spy_rating = input("How much you like it " + spy_name)         #use for enter rating by spy
         print("Welcome,")
         print(spy_name+ " age: " +str(spy_age)+ " and rating: " +  spy_rating + " We are proud to have you onboard")
     else:
