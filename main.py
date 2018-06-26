@@ -4,6 +4,7 @@
 from default import spy_name,spy_salutation,spy_age,spy_rating
 question = "Welcome to SPY_CHAT /n Are you a default user (Y/N)?"
 choice = input(question)
+STATUS_MSG = ['PLEASE LEAVE MESSAGE','I AM BUSY','SECRET IS ALWAYS GOOD','Every day give a secret']        #older status messages list
 if choice == "Y" or "y":
     #Continue with default user information
     start_chat(spy_name,spy_age,spy_rating)
@@ -63,6 +64,8 @@ def start_chat(spy_name,spy_age,spy_rating):
         menu_choice = int(menu_choice)
 
         if menu_choice == 1:
+            current_status = add_status(current_status_msg)
+            print("YOUR CURRENT STATUS IS %s" %current_status)
              #status update module
         elif menu_choice == 2:
                #add new friend
@@ -77,15 +80,34 @@ def start_chat(spy_name,spy_age,spy_rating):
         else:
             print("Ooops! you have entered a wrong choice")
                #default message
-def add(current_status_msg):
+def add_status(current_status_msg):
     if current_status_msg != None:
         print("your current status is %s" %current_status_msg)
     else:
         print("you don't have any status right now")
-    default = input("Do you want to select from your older status(Y/N)?")
-    if default.upper() == "N":
-        new_status_msg = input("What is on your mind?")
-        if len(new_status_msg)>0:
-            updated_status = new_status_msg
+        default = input("Do you want to select from your older status(Y/N)?")
+        if default.upper() == "N":
+            new_status_msg = input("What is on your mind?")
+            if len(new_status_msg)>0:
+                updated_status = new_status_msg
+                STATUS_MSG.append(new_status_msg)
+            else:
+                print("you have not entered any status\nPlease try again")
+        elif default.upper() == 'Y':
+            item_pos = 1
+            if STATUS_MSG == []:
+                print("you don't have any older choice")
+            else:
+                for msg in STATUS_MSG:
+                    print('%d. %s' %(item_pos,msg))
+                    item_pos = item_pos + 1
+            while True :
+                status_sel = int(input("select your choice from above status?"))
+                if status_sel > len(STATUS_MSG):
+                    print('Invalid  choice\nPlease try again')
+                else:
+                    updated_status = STATUS_MSG[status_sel-1]
+                    break
         else:
-            print("you have not entered any status\nPlease try again")
+            print('Invalid entry\nTry again')
+    return updated_status
