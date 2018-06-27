@@ -140,17 +140,15 @@
 
 #a.insert(2,'India')
 #print(a)
-new_status_msg = input("What is on your mind?")
-STATUS_MSG = ['PLEASE LEAVE MESSAGE','I AM BUSY','SECRET IS ALWAYS GOOD','Every day give a secret']
-if len(new_status_msg)>0:
-    updated_status = new_status_msg
-    STATUS_MSG.append(new_status_msg)
-else:
-    print("you have not entered any status\nPlease try again")
-item_pos = 1
-if STATUS_MSG == []:
-    print("you don't have any older choice")
-else:
-    for msg in STATUS_MSG:
-        print('%d. %s' %(item_pos,msg))
-        item_pos = item_pos + 1
+#new_status_msg = input("What is on your mind?")
+#STATUS_MSG = ['PLEASE LEAVE MESSAGE','I AM BUSY','SECRET IS ALWAYS GOOD','Every day give a secret']
+#if len(new_status_msg)>0:
+#    updated_status = new_status_msg
+#    STATUS_MSG.append(new_status_msg)
+#else:
+#    print("you have not entered any status\nPlease try again")
+#item_pos = 1
+##    print("you don't have any older choice")
+#lse:
+##        print('%d. %s' %(item_pos,msg))
+#        item_pos = item_pos + 1
