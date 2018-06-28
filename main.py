@@ -9,10 +9,10 @@ from default import spy_name,spy_salutation,spy_age,spy_rating  #import default.
 
 #==================================start_chat()  function method==============================================================
 
-def start_chat(spy_name,spy_age,spy_rating):
+def start_chat(spy_name,spy_age,spy_rating):           #define start_chat() function
     print("Authantication Complete!\nWelcome\n%s\nage - %d\nrating - %.2f" %(spy_name,spy_age,spy_rating))
-    current_status_msg = None
-    if spy_age>12 and spy_age<60:
+    current_status_msg = None                              #current_status none
+    if spy_age>12 and spy_age<60:                           # validation for spy_age
 
         show_menu = True
         while show_menu == True:
@@ -25,17 +25,19 @@ def start_chat(spy_name,spy_age,spy_rating):
                       5. Read chats from users
                       6. Press '0' for Exit"""
 
-            menu_choice = input(menu)
-            menu_choice = int(menu_choice)
+            menu_choice = input(menu)                     # choosing menu_choice
+            menu_choice = int(menu_choice)                #typecasting string to integer
 
             if menu_choice == 1:                  #status update module
 
-                current_status = add_status(current_status_msg)
+                current_status = add_status(current_status_msg)            #current_status updated
                 print("YOUR CURRENT STATUS IS %s" %current_status)
 
             elif menu_choice == 2:                 #add new friend
                 print("Add friend")
-
+                add_your_friend = add_friend()
+                print("YOUR FRIEND %s IS SUCCESFULLY ADDED" %friend_name[len(friend_name)-1])
+                print("YOU HAVE %d FRIENDS NOW" %add_your_friend)
 
             elif menu_choice == 3:                   #send a secret message
                 print("send secret messages")
@@ -86,10 +88,35 @@ def add_status(current_status_msg):
             print('Invalid entry\nTry again')
     return updated_status
 
-#main function start
+#==============================add_friend() function=======================================================
+
+def add_friend():
+
+    new_name = input("Enter your friend name")
+    new_salutation = input(" what should we call your friend (Mr./Miss.)?")
+    new_name = new_salutation+" "+new_name
+    new_age =  int(input("Enter your friend age"))
+    new_rating = float(input("Enter your friend new rating"))
+
+    if len(new_name) > 0 and new_age > 12 and new_age < 60:
+        friend_name.append(new_name)
+        friend_age.append(new_age)
+        friend_rating.append(new_rating)
+        friend_online.append(True)
+    else:
+        print("Soory! your friend does not fullfill neccessary criteria to be a spy")
+    return len(friend_name)
+
+#===============================main function start=========================================================
 question = "Welcome to SPY_CHAT /n Are you a default user (Y/N)?"
 choice = input(question)
-STATUS_MSG = ['PLEASE LEAVE MESSAGE','I AM BUSY','SECRET IS ALWAYS GOOD','Every day give a secret']        #older status messages list
+STATUS_MSG = ['PLEASE LEAVE MESSAGE','I AM BUSY','SECRET IS ALWAYS GOOD','Every day give a secret']
+                                                                #older status messages list
+friend_name = []
+friend_age = []                                    #friend information lists
+friend_rating = []
+friend_online = []
+
 if choice.upper() == "Y":
     #print("PLEASE signup")
     start_chat(spy_name,spy_age,spy_rating)
@@ -132,4 +159,3 @@ elif choice.upper() == "N":
             print("Ooops! Sorry,you are not of correct age to be our spy")
     else:
         print("Sorry,you have entered an invalid Name!")
-    #start_chat(spy_name,spy_age,spy_rating)
