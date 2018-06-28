@@ -152,3 +152,7 @@
 #lse:
 ##        print('%d. %s' %(item_pos,msg))
 #        item_pos = item_pos + 1
+a = [10, 20, 30, 40]
+a.append(70)
+#a.insert()
+print(a)

@@ -4,15 +4,15 @@
 #============================import files and library=========================================================
 
 import sys            #import sys library for exit application
-from default import spy_name,spy_salutation,spy_age,spy_rating  #import default.py file (default user info)
+from default import spy  #import default.py file (default user info)
 
 
 #==================================start_chat()  function method==============================================================
 
-def start_chat(spy_name,spy_age,spy_rating):           #define start_chat() function
-    print("Authantication Complete!\nWelcome\n%s\nage - %d\nrating - %.2f" %(spy_name,spy_age,spy_rating))
+def start_chat(spy):           #define start_chat() function
+    print("Authantication Complete!\nWelcome\n%s\nage - %d\nrating - %.2f" %(spy['name'],spy['age'],spy['rating']))
     current_status_msg = None                              #current_status none
-    if spy_age>12 and spy_age<60:                           # validation for spy_age
+    if spy['age']>12 and spy['age']<60:                           # validation for spy_age
 
         show_menu = True
         while show_menu == True:
@@ -36,7 +36,7 @@ def start_chat(spy_name,spy_age,spy_rating):           #define start_chat() func
             elif menu_choice == 2:                 #add new friend
                 print("Add friend")
                 add_your_friend = add_friend()
-                print("YOUR FRIEND %s IS SUCCESFULLY ADDED" %friend_name[len(friend_name)-1])
+                print("YOUR FRIEND %s IS SUCCESFULLY ADDED"  % friends[len(friends)-1['name']])
                 print("YOU HAVE %d FRIENDS NOW" %add_your_friend)
 
             elif menu_choice == 3:                   #send a secret message
@@ -91,35 +91,35 @@ def add_status(current_status_msg):
 #==============================add_friend() function=======================================================
 
 def add_friend():
+    spy_friends = {'name' : ' ',
+                  'salutation' : ' ',
+                  'age' : ' 0',
+                  'rating' : '0.0',
+                  'online_status' : True
+                  }
+    spy_friends['name'] = input("Enter your friend name")
+    spy_friends['salutation'] = input(" what should we call your friend (Mr./Miss.)?")
+    spy_friends['name'] = spy_friends['salutation']+" "+spy_friends['name']
+    spy_friends['age'] =  int(input("Enter your friend age"))
+    spy_friends['rating'] = float(input("Enter your friend new rating"))
 
-    new_name = input("Enter your friend name")
-    new_salutation = input(" what should we call your friend (Mr./Miss.)?")
-    new_name = new_salutation+" "+new_name
-    new_age =  int(input("Enter your friend age"))
-    new_rating = float(input("Enter your friend new rating"))
-
-    if len(new_name) > 0 and new_age > 12 and new_age < 60:
-        friend_name.append(new_name)
-        friend_age.append(new_age)
-        friend_rating.append(new_rating)
-        friend_online.append(True)
+    if len(spy_friends['name']) > 0 and spy_friends['age'] > 12 and spy_friends['age'] < 60:
+        friends.append(spy_friends)
     else:
-        print("Soory! your friend does not fullfill neccessary criteria to be a spy")
-    return len(friend_name)
+        print("Soorry! your friend does not fullfill neccessary criteria to be a spy")
+    return len(friends)
 
 #===============================main function start=========================================================
 question = "Welcome to SPY_CHAT /n Are you a default user (Y/N)?"
 choice = input(question)
 STATUS_MSG = ['PLEASE LEAVE MESSAGE','I AM BUSY','SECRET IS ALWAYS GOOD','Every day give a secret']
                                                                 #older status messages list
-friend_name = []
-friend_age = []                                    #friend information lists
-friend_rating = []
-friend_online = []
+friends = []
+
 
 if choice.upper() == "Y":
     #print("PLEASE signup")
-    start_chat(spy_name,spy_age,spy_rating)
+    start_chat(spy)
     #Continue with default user information
 elif choice.upper() == "N":
 
