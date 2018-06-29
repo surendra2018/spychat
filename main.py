@@ -36,7 +36,7 @@ def start_chat(spy):           #define start_chat() function
             elif menu_choice == 2:                 #add new friend
                 print("Add friend")
                 add_your_friend = add_friend()
-                print("YOUR FRIEND %s IS SUCCESFULLY ADDED"  % friends[len(friends)-1['name']])
+                print("YOUR FRIEND %s IS SUCCESFULLY ADDED"  % friends[0]['name'])
                 print("YOU HAVE %d FRIENDS NOW" %add_your_friend)
 
             elif menu_choice == 3:                   #send a secret message
@@ -98,7 +98,7 @@ def add_friend():
                   'online_status' : True
                   }
     spy_friends['name'] = input("Enter your friend name")
-    spy_friends['salutation'] = input(" what should we call your friend (Mr./Miss.)?")
+    spy_friends['salutation'] = input("what should we call your friend (Mr./Miss.)?")
     spy_friends['name'] = spy_friends['salutation']+" "+spy_friends['name']
     spy_friends['age'] =  int(input("Enter your friend age"))
     spy_friends['rating'] = float(input("Enter your friend new rating"))
